@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: invoice-service
+  datasource:
+    url: jdbc:postgresql://postgres-db-local01:5432/postgres
+    username: postgres
+    password: test123
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus

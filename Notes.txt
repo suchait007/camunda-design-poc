@@ -1,0 +1,10 @@
+docker run -d --name camunda -p 8080:8080 --network bridge-network-demo \
+           -e DB_DRIVER=org.postgresql.Driver \
+           -e DB_URL=jdbc:postgresql://db:5432/process-engine \
+           -e DB_USERNAME=camunda \
+           -e DB_PASSWORD=camunda \
+           -e WAIT_FOR=db:5432 \
+           camunda/camunda-bpm-platform:latest
+
+
+docker run --name postgres-db-local01 -p 5432:5432  -e POSTGRES_PASSWORD=test123 --network bridge-network-demo --rm -v mydata01:/var/lib/postgresql/data postgres:16-alpine3.20

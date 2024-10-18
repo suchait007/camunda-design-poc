@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: loan-approval-workflow-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: test123
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    default-schema: credit_products_db
+    baselineOnMigrate: true
+  locations:
+    - classpath:db/migration
+
+server:
+  port: 8091
+
+camunda.bpm.client:
+  base-url: http://localhost:8080/engine-rest
+  lock-duration: 10000 # defines how many milliseconds the External Tasks are locked until they can be fetched again
+  subscriptions:
+    scoreProvider:
+      variable-names: userId
+      process-definition-key: loan_process
+    loanGranter:
+      variable-names: userId, customerId, creditScore
+      process-definition-key: loan_process
+
+logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+credit:
+  service:
+    url: http://localhost:8092
+    get-credit-score-url: /v1/credit-score
+
+
