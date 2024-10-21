@@ -1,0 +1,16 @@
+<div>
+    <h3>Task Form for Task ID: {{ taskId }}</h3>
+    <form (ngSubmit)="completeTask()">
+        <label>
+            Name:
+            <input type="text" [(ngModel)]="formVariables.name" name="name" />
+        </label>
+        <br />
+        <label>
+            Age:
+            <input type="number" [(ngModel)]="formVariables.age" name="age" />
+        </label>
+        <br />
+        <button type="submit">Complete Task</button>
+    </form>
+</div>

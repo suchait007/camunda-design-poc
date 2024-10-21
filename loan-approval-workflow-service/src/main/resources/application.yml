@@ -25,7 +25,7 @@ camunda.bpm.client:
       variable-names: userId
       process-definition-key: loan_process
     loanGranter:
-      variable-names: userId, customerId, creditScore
+      variable-names: loanId, customerId, creditScore
       process-definition-key: loan_process
 
 logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application

@@ -1,10 +1,71 @@
-docker run -d --name camunda -p 8080:8080 --network bridge-network-demo \
-           -e DB_DRIVER=org.postgresql.Driver \
-           -e DB_URL=jdbc:postgresql://db:5432/process-engine \
-           -e DB_USERNAME=camunda \
-           -e DB_PASSWORD=camunda \
-           -e WAIT_FOR=db:5432 \
-           camunda/camunda-bpm-platform:latest
-
 
 docker run --name postgres-db-local01 -p 5432:5432  -e POSTGRES_PASSWORD=test123 --network bridge-network-demo --rm -v mydata01:/var/lib/postgresql/data postgres:16-alpine3.20
+
+Get All Users
+
+http://localhost:8080/engine-rest/user?firstResult=0&maxResults=10
+
+curl --location 'http://localhost:8080/api/tasks/get?assignee=demo'
+
+
+[
+    {
+        "id": "1e3ece5c-8e13-11ef-bbd9-5e395bdbae73",
+        "name": "Enter User Property Information",
+        "assignee": "demo",
+        "created": "2024-10-19T12:10:23.473+00:00",
+        "due": null,
+        "followUp": null,
+        "lastUpdated": null,
+        "delegationState": null,
+        "description": null,
+        "executionId": "95620834-8e12-11ef-bbd9-5e395bdbae73",
+        "owner": null,
+        "parentTaskId": null,
+        "priority": 50,
+        "processDefinitionId": "loan_process:2:447a3571-8e12-11ef-bbd9-5e395bdbae73",
+        "processInstanceId": "95620834-8e12-11ef-bbd9-5e395bdbae73",
+        "taskDefinitionKey": "Activity_0d0s7ht",
+        "caseExecutionId": null,
+        "caseInstanceId": null,
+        "caseDefinitionId": null,
+        "suspended": false,
+        "formKey": null,
+        "camundaFormRef": null,
+        "tenantId": null,
+        "taskState": "Created"
+    },
+    {
+        "id": "317ca615-8e13-11ef-bbd9-5e395bdbae73",
+        "name": "Enter User Property Information",
+        "assignee": "demo",
+        "created": "2024-10-19T12:10:55.755+00:00",
+        "due": null,
+        "followUp": null,
+        "lastUpdated": null,
+        "delegationState": null,
+        "description": null,
+        "executionId": "2ad80e6f-8e13-11ef-bbd9-5e395bdbae73",
+        "owner": null,
+        "parentTaskId": null,
+        "priority": 50,
+        "processDefinitionId": "loan_process:2:447a3571-8e12-11ef-bbd9-5e395bdbae73",
+        "processInstanceId": "2ad80e6f-8e13-11ef-bbd9-5e395bdbae73",
+        "taskDefinitionKey": "Activity_0d0s7ht",
+        "caseExecutionId": null,
+        "caseInstanceId": null,
+        "caseDefinitionId": null,
+        "suspended": false,
+        "formKey": null,
+        "camundaFormRef": null,
+        "tenantId": null,
+        "taskState": "Created"
+    }
+]
+
+
+References
+
+* https://docs.camunda.org/manual/7.21/webapps/tasklist/user-assignment/
+
+* https://docs.camunda.org/manual/7.21/user-guide/process-engine/authorization-service/

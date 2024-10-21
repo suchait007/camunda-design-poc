@@ -1,0 +1,12 @@
+.task-list-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+mat-card {
+    margin: 20px 0;
+}
+
+.task-button {
+    margin-left: auto; /* Aligns the button to the right of the list item */
+}

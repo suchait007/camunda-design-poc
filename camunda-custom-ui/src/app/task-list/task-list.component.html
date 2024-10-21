@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span>User Tasks</span>
+</mat-toolbar>
+
+<div *ngIf="tasks.length > 0" class="task-list-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>User Tasks</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let task of tasks">
+                    <span mat-line>{{ task.name }} (ID: {{ task.id }})</span>
+                    <span mat-line class="task-button">
+            <button mat-raised-button color="primary" (click)="selectTask(task.id)">View Task</button>
+          </span>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!-- Display Task Form if a task is selected -->
+<app-task-form *ngIf="selectedTaskId" [taskId]="selectedTaskId"></app-task-form>
